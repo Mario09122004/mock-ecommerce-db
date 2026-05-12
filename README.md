@@ -1,3 +1,6 @@
+<img width="1093" height="703" alt="DB diagram" src="https://github.com/user-attachments/assets/db4e271d-0b14-42f2-82c5-0423654326fd" />
+
+---
 
 # E-commerce Test Database with PostgreSQL
 
