@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:14.22-bookworm
+    restart: always
+    shm_size: 256mb
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: ecommerce_db
+    ports:
+      - "5432:5432" # Lo mantienes expuesto localmente también
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+    networks:
+      - ecommerce_network
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    restart: always
+    networks:
+      - ecommerce_network
+    command: tunnel --url tcp://postgres:5432
+
+volumes:
+  postgresql_data:
+
+networks:
+  ecommerce_network:
+    driver: bridge
