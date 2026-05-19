@@ -71,6 +71,17 @@ If you prefer to generate the data from scratch (note that this will delete any 
    python db_create.py
    ```
 
+### 4. Database Import and Export
+To import (upload) a database dump:
+```bash
+docker compose exec -T postgres psql -U admin -d ecommerce_db < mi_base_de_datos.sql
+```
+
+To export (download) the database:
+```bash
+docker compose exec -T postgres pg_dump -U admin -d ecommerce_db > mi_base_de_datos.sql
+```
+
 ## Security and Performance Notes
 - **Warning:** The credentials configured in the `compose.yaml` file (username: `admin`, password: `admin`) are strictly for **local development and testing environments**. Under no circumstances should they be used in a production environment.
 - The `db_create.py` script inserts a total of 100,000 records (10,000 per table) and then establishes the foreign key relationships. The execution time will depend on the resources of your local machine.
@@ -169,6 +180,17 @@ Si prefieres generar los datos desde cero (ten en cuenta que esto borrará cualq
    ```bash
    python db_create.py
    ```
+
+### 4. Importar y Exportar la Base de Datos
+Para subir la base de datos es con:
+```bash
+docker compose exec -T postgres psql -U admin -d ecommerce_db < mi_base_de_datos.sql
+```
+
+Y para descargarla es con:
+```bash
+docker compose exec -T postgres pg_dump -U admin -d ecommerce_db > mi_base_de_datos.sql
+```
 
 ## Notas de Seguridad y Rendimiento
 - **Advertencia:** Las credenciales configuradas en el archivo `compose.yaml` (usuario: `admin`, password: `admin`) son estrictamente para **entornos de desarrollo local y pruebas**. Bajo ninguna circunstancia deben utilizarse en un entorno de producción.
