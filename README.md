@@ -75,6 +75,31 @@ If you prefer to generate the data from scratch (note that this will delete any 
 - **Warning:** The credentials configured in the `compose.yaml` file (username: `admin`, password: `admin`) are strictly for **local development and testing environments**. Under no circumstances should they be used in a production environment.
 - The `db_create.py` script inserts a total of 100,000 records (10,000 per table) and then establishes the foreign key relationships. The execution time will depend on the resources of your local machine.
 
+## New Airbnb Database (`new_db`)
+
+We have added a new directory called `new_db/` that contains an alternative database schema based on real Airbnb data. This database is perfect for practicing advanced SQL queries, data warehousing concepts, and handling real-world datasets.
+
+**Data Source:** The data used for this database was extracted from [Inside Airbnb](https://insideairbnb.com/get-the-data/).
+
+### Airbnb Database Structure
+The Airbnb database is standardized into 8 tables, divided by their logical purpose (Catalogs, Master Data, and Historical Data):
+
+1. **`cat_neighbourhoods`** (Categorical): Neighborhoods and their groups.
+2. **`cat_property_types`** (Categorical): Catalog of property types.
+3. **`cat_room_types`** (Categorical): Catalog of room types.
+4. **`data_hosts`** (Master Data): Information about the hosts.
+5. **`data_reviewers`** (Master Data): Users who wrote reviews.
+6. **`data_listings`** (Master Data): The main listings table containing property details (linked to the categorical tables).
+7. **`hist_reviews`** (Historical): Reviews written by users for listings.
+8. **`hist_calendar`** (Historical): Availability and price records per day for each listing.
+
+### How to run `new_db`
+You need `pandas` and `numpy` installed. Run the following command:
+```bash
+pip install pandas numpy psycopg2-binary
+python new_db/db_create_new.py
+```
+
 ---
 
 # DB de pruebas de E-commerce con PostgreSQL
@@ -148,3 +173,28 @@ Si prefieres generar los datos desde cero (ten en cuenta que esto borrará cualq
 ## Notas de Seguridad y Rendimiento
 - **Advertencia:** Las credenciales configuradas en el archivo `compose.yaml` (usuario: `admin`, password: `admin`) son estrictamente para **entornos de desarrollo local y pruebas**. Bajo ninguna circunstancia deben utilizarse en un entorno de producción.
 - El script `db_create.py` realiza la inserción de 100,000 registros en total (10,000 por tabla) y posteriormente establece las relaciones de llaves foráneas. El tiempo de ejecución dependerá de los recursos de tu máquina local.
+
+## Nueva Base de Datos de Airbnb (`new_db`)
+
+Hemos añadido un nuevo directorio llamado `new_db/` que contiene un esquema de base de datos alternativo basado en datos reales de Airbnb. Esta base de datos es perfecta para practicar consultas SQL avanzadas, conceptos de Data Warehousing y el manejo de conjuntos de datos del mundo real.
+
+**Fuente de Datos:** Los datos utilizados para esta base de datos fueron extraídos de [Inside Airbnb](https://insideairbnb.com/get-the-data/).
+
+### Estructura de la Base de Datos Airbnb
+La base de datos de Airbnb está estandarizada en 8 tablas, divididas por su propósito lógico (Catálogos, Datos Maestros e Históricos):
+
+1. **`cat_neighbourhoods`** (Categórica): Vecindarios y sus grupos.
+2. **`cat_property_types`** (Categórica): Catálogo de tipos de propiedad.
+3. **`cat_room_types`** (Categórica): Catálogo de tipos de habitación.
+4. **`data_hosts`** (Datos Maestros): Información sobre los anfitriones.
+5. **`data_reviewers`** (Datos Maestros): Usuarios que escribieron reseñas.
+6. **`data_listings`** (Datos Maestros): La tabla principal de alojamientos con detalles de la propiedad (vinculada a las tablas categóricas).
+7. **`hist_reviews`** (Histórica): Reseñas escritas por los usuarios para los alojamientos.
+8. **`hist_calendar`** (Histórica): Registros de disponibilidad y precio por día para cada alojamiento.
+
+### Cómo ejecutar `new_db`
+Necesitas tener instalados `pandas` y `numpy`. Ejecuta el siguiente comando:
+```bash
+pip install pandas numpy psycopg2-binary
+python new_db/db_create_new.py
+```
