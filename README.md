@@ -1,4 +1,10 @@
+## E_commerce_db
+
 <img width="1093" height="703" alt="DB diagram" src="https://github.com/user-attachments/assets/db4e271d-0b14-42f2-82c5-0423654326fd" />
+
+## Airbnb_db
+
+<img width="1294" height="822" alt="image" src="https://github.com/user-attachments/assets/47b0c772-bcbc-42b2-86ee-175024dc202c" />
 
 ---
 
